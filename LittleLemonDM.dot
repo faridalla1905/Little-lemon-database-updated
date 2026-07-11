@@ -1,0 +1,64 @@
+digraph LittleLemon {
+  graph [rankdir=LR, bgcolor="white", pad="0.3", nodesep="0.6", ranksep="0.8"];
+  node [shape=plain, fontname="Arial"];
+
+  Customers [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="6">
+      <TR><TD BGCOLOR="#D9EAF7"><B>Customers</B></TD></TR>
+      <TR><TD ALIGN="LEFT"><B>PK</B> CustomerID</TD></TR>
+      <TR><TD ALIGN="LEFT">FullName</TD></TR>
+      <TR><TD ALIGN="LEFT">PhoneNumber</TD></TR>
+      <TR><TD ALIGN="LEFT">Email</TD></TR>
+    </TABLE>
+  >];
+
+  Staff [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="6">
+      <TR><TD BGCOLOR="#D9EAF7"><B>Staff</B></TD></TR>
+      <TR><TD ALIGN="LEFT"><B>PK</B> StaffID</TD></TR>
+      <TR><TD ALIGN="LEFT">FullName</TD></TR>
+      <TR><TD ALIGN="LEFT">Role</TD></TR>
+      <TR><TD ALIGN="LEFT">Salary</TD></TR>
+    </TABLE>
+  >];
+
+  MenuItems [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="6">
+      <TR><TD BGCOLOR="#D9EAF7"><B>MenuItems</B></TD></TR>
+      <TR><TD ALIGN="LEFT"><B>PK</B> MenuItemID</TD></TR>
+      <TR><TD ALIGN="LEFT">CourseName</TD></TR>
+      <TR><TD ALIGN="LEFT">StarterName</TD></TR>
+      <TR><TD ALIGN="LEFT">DessertName</TD></TR>
+      <TR><TD ALIGN="LEFT">DrinkName</TD></TR>
+      <TR><TD ALIGN="LEFT">Price</TD></TR>
+    </TABLE>
+  >];
+
+  Orders [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="6">
+      <TR><TD BGCOLOR="#FBE5D6"><B>Orders</B></TD></TR>
+      <TR><TD ALIGN="LEFT"><B>PK</B> OrderID</TD></TR>
+      <TR><TD ALIGN="LEFT">OrderDate</TD></TR>
+      <TR><TD ALIGN="LEFT">Quantity</TD></TR>
+      <TR><TD ALIGN="LEFT">TotalCost</TD></TR>
+      <TR><TD ALIGN="LEFT"><B>FK</B> CustomerID</TD></TR>
+      <TR><TD ALIGN="LEFT"><B>FK</B> MenuItemID</TD></TR>
+    </TABLE>
+  >];
+
+  Bookings [label=<
+    <TABLE BORDER="1" CELLBORDER="1" CELLSPACING="0" CELLPADDING="6">
+      <TR><TD BGCOLOR="#FBE5D6"><B>Bookings</B></TD></TR>
+      <TR><TD ALIGN="LEFT"><B>PK</B> BookingID</TD></TR>
+      <TR><TD ALIGN="LEFT">BookingDate</TD></TR>
+      <TR><TD ALIGN="LEFT">TableNumber</TD></TR>
+      <TR><TD ALIGN="LEFT"><B>FK</B> CustomerID</TD></TR>
+      <TR><TD ALIGN="LEFT"><B>FK</B> StaffID</TD></TR>
+    </TABLE>
+  >];
+
+  Customers -> Orders [label="1 to many", arrowhead=crow, arrowtail=none];
+  MenuItems -> Orders [label="1 to many", arrowhead=crow, arrowtail=none];
+  Customers -> Bookings [label="1 to many", arrowhead=crow, arrowtail=none];
+  Staff -> Bookings [label="1 to many", arrowhead=crow, arrowtail=none];
+}
